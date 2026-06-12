@@ -9,19 +9,29 @@ import java.util.ArrayList;
     private ArrayList<String> classList;
 
         /**
-        * Constructor.
+        * Construct an Address object
+        * @Param address1 first address line
+        * @param address2 second address line
+        * @param city city name
+        * @param state state abbreviation
+        * @param zipCode ZIP code
+        * @throws CloneNotSupportedException if the address is not cloning 
         */
-        public Student(String firstName,String lastName,Address address,Long studentId) {
-
+        public Student(String firstName,String lastName,Address address,Long studentId) 
+    
+        throws CloneNotSupportedException{
         this.firstName = firstName;
         this.lastName = lastName;
-        this.address = address;
         this.studentId = studentId;
+        this.address = new Address(address);
         this.classList = new ArrayList<>();
+        
     }
 
         /**
         * Copy constructor.
+        * @param other Address object to copy
+        * @throws CloneNotSupportedException if cloning fails
         */
         public Student(Student other)
         throws CloneNotSupportedException {
@@ -33,6 +43,8 @@ import java.util.ArrayList;
         this.studentId = copy.studentId;
         this.address = copy.address;
         this.classList = copy.classList;
+        
+        
         }
 
         public String getFirstName() {
@@ -61,6 +73,7 @@ import java.util.ArrayList;
 
         /**
         * Returns deep copy of address.
+        * @return second address line
         */
         public Address getAddress()
         throws CloneNotSupportedException {
@@ -70,6 +83,7 @@ import java.util.ArrayList;
 
         /**
         * Returns deep copy of class list.
+        * @return city name
         */
         public ArrayList<String> getClassList() {
             return new ArrayList<>(classList);
@@ -77,6 +91,7 @@ import java.util.ArrayList;
         
         /**
         * Adds a class.
+        * @param className name of the class to add
         */
         public void addClass(String className) {
             classList.add(className);
@@ -84,6 +99,8 @@ import java.util.ArrayList;
 
         /**
         * Removes a class.
+        * @param className name of class to remove
+        * @throws ClassNotRegisteredException if the class is not found
         */
         public void removeClass(String className)
         throws ClassNotRegisteredException {
