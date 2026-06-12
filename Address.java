@@ -7,8 +7,13 @@ public class Address implements Cloneable {
     private String zipCode;
 
     /**
-    * Constructor.
-    */
+        * Construct an Address object
+        * @Param address1 first address line
+        * @param address2 second address line
+        * @param city city name
+        * @param state state abbreviation
+        * @param zipCode ZIP code
+        */
     public Address(String address1, String address2,String city, State state,String zipCode) {
 
             this.address1 = address1;
@@ -20,6 +25,8 @@ public class Address implements Cloneable {
 
         /**
         * Copy constructor.
+        * @param otheer Address object to copy
+        * @throws CloneNotSupportedException if cloning fails
         */
         public Address(Address other)
         
