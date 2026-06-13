@@ -9,13 +9,12 @@ import java.util.ArrayList;
     private ArrayList<String> classList;
 
         /**
-        * Construct an Address object
-        * @Param address1 first address line
-        * @param address2 second address line
-        * @param city city name
-        * @param state state abbreviation
-        * @param zipCode ZIP code
-        * @throws CloneNotSupportedException if the address is not cloning 
+        * Construct a student object
+        * @param firstName student's first name
+        * @param lastName student's last name
+        * @param address student's address
+        * @param studentId student's ID number
+        * @throws CloneNotSupportedException if address cloning fails.
         */
         public Student(String firstName,String lastName,Address address,Long studentId) 
     
@@ -41,39 +40,58 @@ import java.util.ArrayList;
         this.firstName = copy.firstName;
         this.lastName = copy.lastName;
         this.studentId = copy.studentId;
-        this.address = copy.address;
-        this.classList = copy.classList;
+        this.address = new Address(other.address);
+        this.classList = new ArrayList<>(other.classList);
         
         
         }
-
+        /**
+         * return the student's first name
+         * @return first name
+         */
         public String getFirstName() {
             return firstName;
         }
-
+        /**
+         * sets the student's first name
+         * @param firstName new first name
+         */
         public void setFirstName(String firstName) {
             this.firstName = firstName;
         }
-
+        /**
+         * return the student's last name
+         * @return last name
+         */
         public String getLastName() {
             return lastName;
         }
-
+        /**
+         * sets the student's last name
+         * @param lastName new last name
+         */
         public void setLastName(String lastName) {
             this.lastName = lastName;
         }
-
+        /**
+         * Return the student's ID
+         * @return studentId
+         */
         public Long getStudentId() {
             return studentId;
         }
-
+        /**
+         * sets the student's Id
+         * @param studentId
+         */
         public void setStudentId(Long studentId) {
             this.studentId = studentId;
         }
 
         /**
-        * Returns deep copy of address.
-        * @return second address line
+        * Returns a deep copy of the address.
+        * @return a copy of the address line
+        * @throws CloneNotSupportedException if cloning fails
         */
         public Address getAddress()
         throws CloneNotSupportedException {
@@ -82,9 +100,8 @@ import java.util.ArrayList;
         }
 
         /**
-        * Returns deep copy of class list.
-        * @return city name
-        */
+        * Returns a copy of the class list.
+        * @return copied class list
         public ArrayList<String> getClassList() {
             return new ArrayList<>(classList);
         }
@@ -109,7 +126,11 @@ import java.util.ArrayList;
         throw new ClassNotRegisteredException(className + " not found in class list.");
             }
         }
-
+        /**
+         * creates and returns a deep copy of this student
+         * @return cloned student object
+         * @throws cloneNotSupportedException if cloning is not supported
+         */
         @Override
         public Student clone()
             throws CloneNotSupportedException {
@@ -122,7 +143,10 @@ import java.util.ArrayList;
 
             return copy;
         }
-
+        /**
+         * returns a string representation of the student
+         * @return formatted student information
+         */
         @Override
         public String toString() {
 
