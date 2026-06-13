@@ -1,5 +1,8 @@
 public class Main {
-
+    /**
+     * Tests the student and addresses classes
+     * @para args ccommand-line arguments
+     */
     public static void main(String[] args) {
 
         try {
